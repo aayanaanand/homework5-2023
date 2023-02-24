@@ -1,0 +1,164 @@
+/* Step - 1 animating logo with keyframes*/
+#logo { /*animation details*/
+    animation-duration: 5s;
+    animation-name: logoanimation;
+}
+@keyframes logoanimation { /*setting up logoanimation start and end*/
+    0% {
+        width: 25px; opacity: 0;
+    }
+    100% {
+        width: 475px; opacity: 1;
+    }
+}
+
+/* Step - 2 edit body fonts and background*/
+body {
+    font-family: "Poppins", serif;
+    background-image: url(../images/concrete_seamless.png);
+    background-color: #f1f1f1;
+}
+
+/* Step - 3 add flex to headers, have them display as a centered column*/
+header {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+/* Step - 4 add flex to nav_links, have them display as a column*/
+.nav_links {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+/* Step - 5 style links so that they have the same color after being visited*/
+a:visited {
+    color: initial; /*keeing initial color*/
+}
+
+/* Step - 6 only styling header elements that are direct children of .card*/
+.card > header {
+    background: #288088;
+    border: solid 2px #45adad;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+} 
+
+/* Step - 7 styling card class overall*/
+.card{
+    flex-basis: 450px;/*specifying initial size*/
+    border-top-left-radius: 50px;/*added identical borders to card class to perfect border curving*/
+    border-top-right-radius: 50px;
+}
+
+/* Step - 8 styling pricing class using flex*/
+.pricing {
+    display: flex;
+    align-items: stretch;/*strech all items to have same widths*/
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;/*keep everything centered*/
+}
+
+/* Step - 9 styling just images in the gallery*/
+.gallery img {
+    border: solid 10px #50c7c7;
+    margin: 10px;
+    width: 300px;
+}
+
+/* Step - 10 style the gallery overall using flex*/
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+@media screen and (min-width: 900px) {
+    
+    /* Step - 11 style header and nav_links for desktop using flex*/
+    header, .nav_links {
+        display: flex;
+        flex-direction: row;/*change to be in one row*/
+        flex-wrap: nowrap;
+        justify-content: space-between;/*keep space between elements*/
+    }
+
+    /* Step - 12 style pricing and card for desktop*/
+    .pricing, .card {
+        flex-basis: 275px;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;/*keep content in the center while staying in the row direction*/
+    }
+    .card h3 {/*make sure the h3s in the cards are left aligned*/
+        text-align: left;
+    }
+
+    /* Step - 13 keep the first header at the top of the screen*/
+    body > header {/*using fixed position and width to do this*/
+        position: fixed;
+        width: 100%;
+    }
+    main > h1 {
+        visibility: hidden;/*hiding the h1 underneath*/
+    }
+
+}
+
+/* Step - 14 using media query for reduced motion*/
+@media (prefers-reduced-motion: reduce) {
+    #logo {
+        animation: none;/*turning off animation*/
+    }
+}
+
+@media print {
+    body {
+        /* Step 15 changing font on body in print*/
+        font-family: Arial, Helvetica;
+        /* Step 16 removing background image*/
+        background-image: none;
+    }
+
+    /* Step 17 editing nav/nav_links to be spaced as shown for print*/
+    nav, .nav_links {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-around;/*keeping space around the links*/
+        width: 100%;/*allowing them to take up entire width*/
+    }
+
+    /* Step - 18 style pricing class for print*/
+    .pricing {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-end;/*keeps all elements aligned at the bottom*/
+    }
+
+    /* Step - 19 style card elements for print*/
+    .card {
+        border: solid 2px #45addd;
+        flex-basis: 325px;
+    }
+
+    /* Step - 20 hiding gallery in print*/
+    .gallery, #gallery {
+        visibility: hidden;
+        display: none;
+    }
+
+    /* Step - 21 adding thumb emoji for print*/
+    .card li:nth-child(2)::after {
+        content: "👍";/*adding this content after the pre-existing content of the 2nd li element*/
+    }
+}
